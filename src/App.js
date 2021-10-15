@@ -8,6 +8,7 @@ import GlobalLoader from './components/GlobalLoader'
 const Home = lazy(() => import('./components/Home'))
 const Signup = lazy(() => import('./components/Signup'))
 const Login = lazy(() => import('./components/Login'))
+const Market = lazy(() => import('./components/Market'))
 function App() {
   return (
     <Suspense fallback={<GlobalLoader />}>
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/crear-cuenta" component={Signup} />
             <Route exact path="/iniciar-sesion" component={Login} />
+            <Route exact path="/tienda" component={Market} />
           </Switch>
         </Router>
       </UsersState>

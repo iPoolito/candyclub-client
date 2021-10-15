@@ -8,9 +8,14 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
-  Flex
+  Flex,
+  Image,
+  Heading
 } from '@chakra-ui/react'
 import UsersContext from '../context/Users/UsersContex'
+
+import logo from '../images/candyclub.png'
+import backgroundImage from '../images/background.jpg'
 
 export default function Login() {
   const ctxUser = useContext(UsersContext)
@@ -39,16 +44,41 @@ export default function Login() {
   }
 
   return (
-    <Flex as="main" alignItems="center" justifyContent="center">
+    <Flex
+      as="main"
+      w="100%"
+      h="calc(100vh - 80px)"
+      backgroundImage={backgroundImage}
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover"
+      align="center"
+      justify="center"
+      p="24px"
+    >
       <Flex
         as="form"
         flexDirection="column"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-evenly"
         onSubmit={e => {
           submitData(e)
         }}
+        backdropFilter="blur(4px)"
+        backgroundColor="rgba(255,255,255,1)"
+        borderRadius="12px"
+        border="1px solid rgba(255,255,255,0.18)"
+        w="100%"
+        maxWidth="480px"
+        h={['100%', '100%', '80%', '80%', '80%']}
+        p="24px"
+        boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.37)"
       >
+        <Image src={logo} alt="logo" h="160px" w="160px" objectFit="cover" />
+
+        <Heading as="h1" size="lg">
+          Iniciar Sesion
+        </Heading>
+
         <FormControl id="email" isRequired px={8} py={4}>
           <FormLabel>Correo</FormLabel>
           <Input
@@ -58,6 +88,7 @@ export default function Login() {
             onChange={e => {
               handleChange(e)
             }}
+            focusBorderColor="pink.500"
           />
         </FormControl>
 
@@ -73,16 +104,17 @@ export default function Login() {
               onChange={e => {
                 handleChange(e)
               }}
+              focusBorderColor="pink.500"
             />
             <InputRightElement width="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={handleShow}>
+              <Button h="1.75rem" size="sm" onClick={handleShow} colorScheme="pink">
                 {show ? 'Ocultar' : 'Mostrar'}
               </Button>
             </InputRightElement>
           </InputGroup>
         </FormControl>
 
-        <Button colorScheme="pink" size="lg" type="submit" px={8} py={4}>
+        <Button colorScheme="pink" size="lg" type="submit" px={8} py={8} mt={8} w="100%">
           Crear cuenta
         </Button>
       </Flex>
