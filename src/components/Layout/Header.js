@@ -6,10 +6,16 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <header>
-      <Flex>
-        <nav>
+      <nav>
+        <Flex flexDirection="row" width="100%" justifyContent="space-around">
           <Link to="/">
             <Image src={logo} alt="logo" boxSize="100px" objectFit="cover" />
+          </Link>
+          <Link to="/iniciar-sesion">
+            <Box>Tienda</Box>
+          </Link>
+          <Link to="/iniciar-sesion">
+            <Box>Sobre Nosotros</Box>
           </Link>
           <Link to="/iniciar-sesion">
             <Box>Iniciar Sesion</Box>
@@ -17,8 +23,15 @@ export default function Header() {
           <Link to="/crear-cuenta">
             <Box>Registrarse</Box>
           </Link>
-        </nav>
-      </Flex>
+
+          <Link to="/perfil">
+            <Box>Perfil</Box>
+          </Link>
+          <Link to="/">
+            <Box>Cerrar Sesion</Box>
+          </Link>
+        </Flex>
+      </nav>
     </header>
   )
 }
