@@ -76,7 +76,7 @@ export default function Login() {
         <Image src={logo} alt="logo" h="160px" w="160px" objectFit="cover" />
 
         <Heading as="h1" size="lg">
-          Iniciar Sesion
+          Iniciar sesión
         </Heading>
 
         <FormControl id="email" isRequired px={8} py={4}>
@@ -115,7 +115,7 @@ export default function Login() {
         </FormControl>
 
         <Button colorScheme="pink" size="lg" type="submit" px={8} py={8} mt={8} w="100%">
-          Crear cuenta
+          Iniciar sesión
         </Button>
       </Flex>
     </Flex>
