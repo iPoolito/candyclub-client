@@ -6,12 +6,12 @@ import {
   Button,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Flex,
   Image,
   Heading
 } from '@chakra-ui/react'
+// FormErrorMessage,
+// FormHelperText,
 import UsersContext from '../context/Users/UsersContex'
 
 import logo from '../images/candyclub.png'

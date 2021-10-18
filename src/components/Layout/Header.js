@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
 import logo from './../../images/candyclub.png'
-import { Flex, Spacer, Box, Image, Menu, MenuButton, MenuList, MenuItem, IconButton } from '@chakra-ui/react'
+import { Flex, Box, Image, Menu, MenuButton, MenuList, MenuItem, IconButton } from '@chakra-ui/react'
 import {
   HamburgerIcon,
   AddIcon,
   ExternalLinkIcon,
-  RepeatIcon,
   StarIcon,
   CheckIcon,
   CloseIcon,
@@ -18,7 +17,7 @@ import UsersContext from '../../context/Users/UsersContex'
 export default function Header() {
   const ctxUser = useContext(UsersContext)
 
-  const { user, authStatus, logoutUser } = ctxUser
+  const { authStatus, logoutUser } = ctxUser
 
   return (
     <Box as="header" h="80px">
