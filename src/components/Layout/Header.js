@@ -1,6 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from './../../images/candyclub.png'
-import { Flex, Box, Image, Menu, MenuButton, MenuList, MenuItem, IconButton } from '@chakra-ui/react'
+import {
+  Flex,
+  Box,
+  Image,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+  useDisclosure,
+  Button,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerFooter,
+  DrawerHeader,
+  Input
+} from '@chakra-ui/react'
 import {
   HamburgerIcon,
   AddIcon,
@@ -14,25 +33,17 @@ import {
 import { Link } from 'react-router-dom'
 import UsersContext from '../../context/Users/UsersContex'
 
-export default function Header() {
+export default function Header({ cart, handleAddItem, handleRemoveItem, total }) {
   const ctxUser = useContext(UsersContext)
-
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
   const { authStatus, logoutUser } = ctxUser
-
+  console.log(cart)
   return (
     <Box as="header" h="80px">
-      <Flex width="100%" justifyContent="flex-end">
+      <Flex width="100%" justifyContent="flex-start">
         {/* h={['100%', '100%', '0%', '0%', '0%']} */}
         <Menu>
-          <Image
-            src={logo}
-            alt="logo"
-            h="100%"
-            w="70px"
-            objectFit="cover"
-            display={['block', 'block', 'none', 'none', 'none']}
-            mr="34%"
-          />
           <MenuButton
             as={IconButton}
             aria-label="Options"
@@ -41,6 +52,15 @@ export default function Header() {
             display={['block', 'block', 'none', 'none', 'none']}
             h="82px"
             w="10%"
+          />
+          <Image
+            src={logo}
+            alt="logo"
+            h="100%"
+            w="70px"
+            objectFit="cover"
+            display={['block', 'block', 'none', 'none', 'none']}
+            mr="34%"
           />
           <MenuList>
             <Link to="/">
@@ -109,6 +129,33 @@ export default function Header() {
             <Link to="/perfil">
               <Box>Mi Perfil</Box>
             </Link>
+
+            <>
+              <Button ref={btnRef} colorScheme="pink" onClick={onOpen}>
+                <span className="material-icons">shopping_cart</span>
+              </Button>
+              <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerCloseButton />
+                  <DrawerHeader>Productos</DrawerHeader>
+
+                  <DrawerBody>
+                    {Object.keys(cart).map(el => {
+                      return <p>{cart[el].name}</p>
+                    })}
+                  </DrawerBody>
+
+                  <DrawerFooter>
+                    <Button variant="outline" mr={3} onClick={onClose}>
+                      Cancelar
+                    </Button>
+                    <Button colorScheme="pink">Pagar</Button>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
+            </>
+
             <Link to="/">
               <Box
                 onClick={() => {

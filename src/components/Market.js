@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import PRODUCTS_API from '../api/products'
 import { Button, Flex, Image, Heading, SimpleGrid } from '@chakra-ui/react'
-import useCart from '../Hooks/useCart'
-import backgroundImage from '../images/pnksmall.jpg'
 
-export default function Market() {
+export default function Market({ cart, handleAddItem, handleRemoveItem, total }) {
   const [listOfProducts, setListOfProducts] = useState(null)
-
-  const { cart, handleAddItem, handleRemoveItem } = useCart()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +21,7 @@ export default function Market() {
     }
     return true
   }
+  console.log(total)
   return (
     <Flex
       as="main"
@@ -63,49 +60,46 @@ export default function Market() {
                 p="24px"
                 boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.37)"
               >
-                <Flex align="center" justify="center" width="100%">
-                  <Image src={el.imageUrl} alt="logo" h="100px" w="100px" objectFit="cover" />
-                </Flex>
-                <Flex flexDirection="column" align="center">
-                  <Heading as="h2" size="lg">
-                    {el.name}
+                <Image src={el.imageUrl} alt="logo" h="80px" w="100px" objectFit="cover" mb="16px" />
+
+                <Heading as="h2" textAlign="center" size="lg">
+                  {el.name}
+                </Heading>
+                <Heading as="h3" size="lg" mt="16px">
+                  ${el.price}
+                </Heading>
+
+                <Flex justifyContent="center" p="24px">
+                  <Button
+                    colorScheme="pink"
+                    size="lg"
+                    type="submit"
+                    px={8}
+                    py={8}
+                    mt={8}
+                    w="25%"
+                    disabled={disableButton(el._id)}
+                    onClick={() => handleRemoveItem(el)}
+                  >
+                    -
+                  </Button>
+
+                  <Heading as="h3" size="md" display="flex">
+                    Cantidad: {cart[el._id]?.qty || 0}
                   </Heading>
-                  <Heading as="h3" size="md">
-                    ${el.price}
-                  </Heading>
 
-                  <Flex justifyContent="center" p="24px">
-                    <Button
-                      colorScheme="pink"
-                      size="lg"
-                      type="submit"
-                      px={8}
-                      py={8}
-                      mt={8}
-                      w="25%"
-                      disabled={disableButton(el._id)}
-                      onClick={() => handleRemoveItem(el)}
-                    >
-                      -
-                    </Button>
-
-                    <Heading as="h3" size="md">
-                      {cart[el._id]?.qty || 0}
-                    </Heading>
-
-                    <Button
-                      colorScheme="pink"
-                      size="lg"
-                      type="submit"
-                      px={8}
-                      py={8}
-                      mt={8}
-                      w="25%"
-                      onClick={() => handleAddItem(el)}
-                    >
-                      +
-                    </Button>
-                  </Flex>
+                  <Button
+                    colorScheme="pink"
+                    size="lg"
+                    type="submit"
+                    px={8}
+                    py={8}
+                    mt={8}
+                    w="25%"
+                    onClick={() => handleAddItem(el)}
+                  >
+                    +
+                  </Button>
                 </Flex>
               </Flex>
             )
