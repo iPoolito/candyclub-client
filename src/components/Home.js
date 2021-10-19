@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useKeenSlider } from 'keen-slider/react'
 import PRODUCTS_API from '../api/products'
-
+import { Flex, Image } from '@chakra-ui/react'
 import 'keen-slider/keen-slider.min.css'
-
+import { Link } from 'react-router-dom'
 export default function Home() {
   const [listOfProducts, setListOfProducts] = useState([])
 
@@ -56,9 +56,10 @@ export default function Home() {
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
           {listOfProducts.map((product, i) => (
-            <div className={`keen-slider__slide number-slide1`}>
+            <Flex className={`keen-slider__slide number-slide${i + 1}`} flexDirection="column">
               <h2>{product.name}</h2>
-            </div>
+              <Image boxSize="150px" objectFit="cover" src={product.imageUrl} alt="Segun Adebayo" />
+            </Flex>
           ))}
         </div>
         {slider && (
