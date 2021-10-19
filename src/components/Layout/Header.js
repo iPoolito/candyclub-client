@@ -131,21 +131,50 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
             </Link>
 
             <>
-              <Button ref={btnRef} colorScheme="pink" onClick={onOpen}>
-                <span className="material-icons">shopping_cart</span>
-              </Button>
-              <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+              <span className="material-icons" onClick={onOpen} ref={btnRef} colorScheme="pink">
+                shopping_cart
+              </span>
+
+              <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef} size="sm">
                 <DrawerOverlay />
                 <DrawerContent>
                   <DrawerCloseButton />
-                  <DrawerHeader>Productos</DrawerHeader>
-
+                  <DrawerHeader>Mi carrito</DrawerHeader>
                   <DrawerBody>
                     {Object.keys(cart).map(el => {
-                      return <p>{cart[el].name}</p>
+                      return (
+                        <Flex justifyContent="space-between" padding="8px 16px" borderBottom="1px solid #eae6e7">
+                          <Flex width="100%">
+                            <Image src={cart[el].imageUrl} alt="logo" h="100%" w="60%" objectFit="cover" mb="16px" />
+                          </Flex>
+                          <Flex flexDirection="column" justifyContent="space-between">
+                            <p>
+                              <b>{cart[el].name}</b>
+                            </p>
+                            <p>Cantidad:{cart[el].qty} </p>
+                            <Flex width="calc(100% - 110px)">
+                              <p>${cart[el].price}</p>
+                            </Flex>
+                          </Flex>
+                        </Flex>
+                      )
                     })}
                   </DrawerBody>
-
+                  <Flex
+                    justifyContent="space-between"
+                    w="100%"
+                    borderBottom="1px solid #eae6e7"
+                    borderTop="1px solid #eae6e7"
+                  >
+                    <p>
+                      {' '}
+                      <b>SubTotal </b>{' '}
+                    </p>
+                    <p>
+                      {' '}
+                      <b> ${total} </b>{' '}
+                    </p>
+                  </Flex>
                   <DrawerFooter>
                     <Button variant="outline" mr={3} onClick={onClose}>
                       Cancelar

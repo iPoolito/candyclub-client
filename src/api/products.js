@@ -15,9 +15,14 @@ const PRODUCTS_API = {
       return []
     }
   },
-  DELETE_PRODUCTS: async () => {
+  GET_FEATURED: async () => {
     try {
-    } catch (error) {}
+      const { data } = await axiosClient.get('/api/products/get-featured')
+      const { data: products } = data
+      return products
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

@@ -60,7 +60,7 @@ export default function Market({ cart, handleAddItem, handleRemoveItem, total })
                 p="24px"
                 boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.37)"
               >
-                <Image src={el.imageUrl} alt="logo" h="80px" w="100px" objectFit="cover" mb="16px" />
+                <Image src={el.imageUrl} alt="Producto" h="80%" w="100%" objectFit="cover" mb="56px" />
 
                 <Heading as="h2" textAlign="center" size="lg">
                   {el.name}
@@ -69,14 +69,14 @@ export default function Market({ cart, handleAddItem, handleRemoveItem, total })
                   ${el.price}
                 </Heading>
 
-                <Flex justifyContent="center" p="24px">
+                <Flex justifyContent="space-between" w="100%" alignItems="center">
                   <Button
                     colorScheme="pink"
                     size="lg"
                     type="submit"
-                    px={8}
-                    py={8}
-                    mt={8}
+                    // px={8}
+                    // py={8}
+                    // mt={8}
                     w="25%"
                     disabled={disableButton(el._id)}
                     onClick={() => handleRemoveItem(el)}
@@ -84,7 +84,7 @@ export default function Market({ cart, handleAddItem, handleRemoveItem, total })
                     -
                   </Button>
 
-                  <Heading as="h3" size="md" display="flex">
+                  <Heading as="h3" size="ls" display="flex" alignItems="flex-start" flexWrap="wrap">
                     Cantidad: {cart[el._id]?.qty || 0}
                   </Heading>
 
@@ -92,9 +92,9 @@ export default function Market({ cart, handleAddItem, handleRemoveItem, total })
                     colorScheme="pink"
                     size="lg"
                     type="submit"
-                    px={8}
-                    py={8}
-                    mt={8}
+                    // px={8}
+                    // py={8}
+                    // mt={8}
                     w="25%"
                     onClick={() => handleAddItem(el)}
                   >
