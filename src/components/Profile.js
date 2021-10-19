@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import PRODUCTS_API from '../api/products'
-import { Button, Flex, Image, Heading, Table, Thead, Tbody, Tfoot, Tr, Th, Td } from '@chakra-ui/react'
+import { Flex, Heading, Table, Thead, Tbody, Tr, Th } from '@chakra-ui/react'
 import UsersContext from '../context/Users/UsersContex'
 
 export default function Profile() {

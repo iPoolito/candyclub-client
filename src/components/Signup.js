@@ -6,7 +6,6 @@ import {
   Button,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
   Flex,
   Image,
@@ -78,7 +77,7 @@ export default function Signup() {
           Registrarse
         </Heading>
 
-        <FormControl id="username" isRequired px={8} py={4}>
+        <FormControl id="username" isRequired py={4}>
           <FormLabel>Nombre de Usuario</FormLabel>
           <Input
             placeholder="candyclub"
@@ -90,7 +89,7 @@ export default function Signup() {
           />
         </FormControl>
 
-        <FormControl id="email" isRequired px={8} py={4}>
+        <FormControl id="email" isRequired py={4}>
           <FormLabel>Correo</FormLabel>
           <Input
             type="email"
@@ -104,7 +103,7 @@ export default function Signup() {
           <FormHelperText>Nunca compartiremos tu correo.</FormHelperText>
         </FormControl>
 
-        <FormControl id="password" isRequired px={8} py={4}>
+        <FormControl id="password" isRequired py={4}>
           <FormLabel>Contraseña</FormLabel>
 
           <InputGroup size="md">

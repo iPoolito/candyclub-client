@@ -23,6 +23,14 @@ const PRODUCTS_API = {
     } catch (error) {
       console.log(error)
     }
+  },
+  CREATE_PRODUCT: async FormData => {
+    try {
+      const res = await axiosClient.post('/api/products/create', FormData)
+      return res.data.data
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

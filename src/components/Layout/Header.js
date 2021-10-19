@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useRef } from 'react'
 import logo from './../../images/candyclub.png'
 import {
   Flex,
@@ -17,8 +17,7 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerFooter,
-  DrawerHeader,
-  Input
+  DrawerHeader
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -36,13 +35,12 @@ import UsersContext from '../../context/Users/UsersContex'
 export default function Header({ cart, handleAddItem, handleRemoveItem, total }) {
   const ctxUser = useContext(UsersContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = React.useRef()
-  const { authStatus, logoutUser } = ctxUser
-  console.log(cart)
+  const btnRef = useRef()
+  const { authStatus, logoutUser, user } = ctxUser
+
   return (
     <Box as="header" h="80px">
-      <Flex width="100%" justifyContent="flex-start">
-        {/* h={['100%', '100%', '0%', '0%', '0%']} */}
+      <Flex width="100%" h={['100%', '100%', 'unset', 'unset', 'unset']} justify="center" align="center">
         <Menu>
           <MenuButton
             as={IconButton}
@@ -50,17 +48,18 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
             icon={<HamburgerIcon />}
             variant="outline"
             display={['block', 'block', 'none', 'none', 'none']}
-            h="82px"
             w="10%"
+            alignSelf="center"
+            position="absolute"
+            left={8}
           />
           <Image
             src={logo}
             alt="logo"
-            h="100%"
+            h="70px"
             w="70px"
             objectFit="cover"
             display={['block', 'block', 'none', 'none', 'none']}
-            mr="34%"
           />
           <MenuList>
             <Link to="/">
@@ -71,7 +70,7 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
               <MenuItem icon={<ExternalLinkIcon />}>Tienda</MenuItem>
             </Link>
             <Link to="/sobre-nosotros">
-              <MenuItem icon={<QuestionIcon />}>Sobre Nosotros</MenuItem>
+              <MenuItem icon={<QuestionIcon />}>Preguntas Frecuentes</MenuItem>
             </Link>
 
             {authStatus ? (
@@ -79,6 +78,17 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
                 <Link to="/perfil">
                   <MenuItem icon={<ViewIcon />}>Mi perfil </MenuItem>
                 </Link>
+
+                <MenuItem>
+                  <span className="material-icons" onClick={onOpen} ref={btnRef} colorScheme="pink">
+                    shopping_cart
+                  </span>
+                  <p onClick={onOpen} ref={btnRef}>
+                    {' '}
+                    Carrito
+                  </p>
+                </MenuItem>
+
                 <Link to="/">
                   <MenuItem
                     onClick={() => {
@@ -121,7 +131,7 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
           <Box>Tienda</Box>
         </Link>
         <Link to="/sobre-nosotros">
-          <Box>Sobre Nosotros</Box>
+          <Box>Preguntas Frecuentes</Box>
         </Link>
 
         {authStatus ? (
@@ -131,7 +141,7 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
             </Link>
 
             <>
-              <span className="material-icons" onClick={onOpen} ref={btnRef} colorScheme="pink">
+              <span className="material-icons" onClick={onOpen} ref={btnRef}>
                 shopping_cart
               </span>
 
@@ -167,12 +177,10 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
                     borderTop="1px solid #eae6e7"
                   >
                     <p>
-                      {' '}
-                      <b>SubTotal </b>{' '}
+                      <b>SubTotal </b>
                     </p>
                     <p>
-                      {' '}
-                      <b> ${total} </b>{' '}
+                      <b> ${total} </b>
                     </p>
                   </Flex>
                   <DrawerFooter>
@@ -184,6 +192,12 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
                 </DrawerContent>
               </Drawer>
             </>
+
+            {user && user.role === 'admin' ? (
+              <Link to="/crear-producto">
+                <Box>Crear producto</Box>
+              </Link>
+            ) : null}
 
             <Link to="/">
               <Box

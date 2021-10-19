@@ -76,6 +76,29 @@ const UsersState = props => {
     })
   }
 
+  const registerAdress = async dataForm => {
+    try {
+      const token = localStorage.getItem('token')
+
+      if (!token) {
+        console.log('Borrando Token de los headers')
+        delete axiosClient.defaults.headers.common['x-auth-token']
+      }
+      axiosClient.defaults.headers.common['x-auth-token'] = token
+
+      const { data } = await axiosClient.post('/api/users/adress', dataForm)
+
+      const updatedUser = data.data
+
+      dispatch({
+        type: `DIRECCION_USUARIO`,
+        payload: updatedUser
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <UsersContex.Provider
       value={{
@@ -84,7 +107,8 @@ const UsersState = props => {
         registerUser,
         loginUser,
         tokenVerification,
-        logoutUser
+        logoutUser,
+        registerAdress
       }}
     >
       {props.children}

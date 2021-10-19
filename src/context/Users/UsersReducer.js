@@ -24,6 +24,11 @@ const reducer = (globalState, action) => {
         user: null,
         authStatus: null
       }
+    case 'DIRECCION_USUARIO':
+      return {
+        ...globalState,
+        user: action.payload
+      }
 
     default:
       return globalState

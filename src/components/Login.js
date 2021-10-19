@@ -79,7 +79,7 @@ export default function Login() {
           Iniciar sesión
         </Heading>
 
-        <FormControl id="email" isRequired px={8} py={4}>
+        <FormControl id="email" isRequired py={4}>
           <FormLabel>Correo</FormLabel>
           <Input
             type="email"
@@ -92,7 +92,7 @@ export default function Login() {
           />
         </FormControl>
 
-        <FormControl id="password" isRequired px={8} py={4}>
+        <FormControl id="password" isRequired py={4}>
           <FormLabel>Contraseña</FormLabel>
 
           <InputGroup size="md">
