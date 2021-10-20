@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Input, Button, FormControl, FormLabel, Flex, Image, Heading, useToast } from '@chakra-ui/react'
 import UsersContext from '../context/Users/UsersContex'
 import backgroundImage from '../images/pnksmall.jpg'
@@ -6,7 +7,7 @@ import logo from '../images/candyclub.png'
 
 export default function Adress() {
   const toast = useToast()
-
+  const history = useHistory()
   const ctxUser = useContext(UsersContext)
   const { registerAdress, user } = ctxUser
 
@@ -30,6 +31,7 @@ export default function Adress() {
       duration: 9000,
       isClosable: true
     })
+    history.push('/perfil')
   }
 
   return (

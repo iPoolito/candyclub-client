@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useKeenSlider } from 'keen-slider/react'
 import PRODUCTS_API from '../api/products'
-import { Flex, Image, Heading, VStack, Box, Text, Button, SimpleGrid } from '@chakra-ui/react'
-import 'keen-slider/keen-slider.min.css'
+import { Flex, Image, Heading, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa'
+import Pik from '../images/diaCampo.jpeg'
+import Oreo from '../images/OreoSmoores.jpeg'
+import Swiss from '../images/Swissmiss.jpeg'
+
 export default function Home() {
   const [listOfProducts, setListOfProducts] = useState([])
 
@@ -29,6 +30,96 @@ export default function Home() {
       color="black"
       p={16}
     >
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <Image
+              w="100%"
+              h={['100%', '100%', '100%', '50%', '50%']}
+              maxHeight="270px"
+              src={Pik}
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          {listOfProducts?.map(el => {
+            return (
+              <div class="carousel-item">
+                <Image
+                  w="100%"
+                  h={['100%', '100%', '100%', '50%', '50%']}
+                  maxHeight="270px"
+                  src={el.imageUrl}
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            )
+          })}
+
+          {/* <div class="carousel-item">
+            <Image
+              w="100%"
+              h={['100%', '100%', '100%', '728px', '728px']}
+              maxHeight="270px"
+              src={Swiss}
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <Image
+              w="100%"
+              h={['100%', '100%', '100%', '728px', '728px']}
+              maxHeight="270px"
+              src={Oreo}
+              class="d-block w-100"
+              alt="..."
+            />
+          </div> */}
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
       <Flex
         spacing={8}
         mt={8}

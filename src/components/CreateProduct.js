@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Input, Button, FormControl, FormLabel, Flex, Image, Heading, useToast, Select } from '@chakra-ui/react'
 import backgroundImage from '../images/pnksmall.jpg'
 import { useHistory } from 'react-router-dom'
@@ -34,7 +34,7 @@ export default function CreateProduct() {
       duration: 9000,
       isClosable: true
     })
-    history.push('/tienda')
+    history.push('/')
   }
 
   const handleUploadPhoto = async ({ target: { files } }) => {

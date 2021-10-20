@@ -11,7 +11,6 @@ import PublicRoute from './components/routes/PublicRoute'
 import useCart from './Hooks/useCart'
 import PrivateRoute from './components/routes/PrivateRoute'
 import AdminRoute from './components/routes/AdminRoute'
-import { CheckIcon } from '@chakra-ui/icons'
 
 const Home = lazy(() => import('./components/Home'))
 const Signup = lazy(() => import('./components/Signup'))

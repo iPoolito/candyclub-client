@@ -1,26 +1,14 @@
 import React, { useContext, useState } from 'react'
-import {
-  Input,
-  Text,
-  Button,
-  FormControl,
-  FormLabel,
-  Flex,
-  Image,
-  Heading,
-  useToast,
-  IconButton
-} from '@chakra-ui/react'
-import { AddIcon } from '@chakra-ui/icons'
+import { Input, Text, Button, FormControl, FormLabel, Flex, Image, Heading, useToast } from '@chakra-ui/react'
 import UsersContext from '../context/Users/UsersContex'
-import backgroundImage from '../images/pnksmall.jpg'
-import logo from '../images/candyclub.png'
+// import backgroundImage from '../images/pnksmall.jpg'
+// import logo from '../images/candyclub.png'
 
 export default function CheckOut({ cart, handleAddItem, handleRemoveItem, total }) {
   const toast = useToast()
 
   const ctxUser = useContext(UsersContext)
-  const { registerAdress, user, logoutUser, authStatus } = ctxUser
+  const { registerAdress, user } = ctxUser
 
   const [newAdress, setNewAdress] = useState(() => ({
     ...user.adress
@@ -151,12 +139,12 @@ export default function CheckOut({ cart, handleAddItem, handleRemoveItem, total 
           )
         })}
         <Flex justifyContent="space-around" w="100%" borderBottom="1px solid #eae6e7" borderTop="1px solid #eae6e7">
-          <p>
+          <Text>
             <b>SubTotal </b>
-          </p>
-          <p>
+          </Text>
+          <Text>
             <b> ${total} </b>
-          </p>
+          </Text>
         </Flex>
         <Flex justifyContent="flex-end" mt={10}>
           <Button colorScheme="pink" w="30%" onClick>
