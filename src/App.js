@@ -11,6 +11,7 @@ import PublicRoute from './components/routes/PublicRoute'
 import useCart from './Hooks/useCart'
 import PrivateRoute from './components/routes/PrivateRoute'
 import AdminRoute from './components/routes/AdminRoute'
+import { CheckIcon } from '@chakra-ui/icons'
 
 const Home = lazy(() => import('./components/Home'))
 const Signup = lazy(() => import('./components/Signup'))
@@ -20,6 +21,7 @@ const Profile = lazy(() => import('./components/Profile'))
 const About = lazy(() => import('./components/About'))
 const Adress = lazy(() => import('./components/Adress'))
 const CreateProduct = lazy(() => import('./components/CreateProduct.js'))
+const CheckOut = lazy(() => import('./components/CheckOut'))
 function App() {
   const cart = useCart()
 
@@ -40,6 +42,9 @@ function App() {
               <AuthRoute exact path="/crear-cuenta" component={Signup} />
               <AuthRoute exact path="/iniciar-sesion" component={Login} />
               <PrivateRoute exact path="/perfil" component={Profile} />
+              <PrivateRoute exact path="/pagar">
+                <CheckOut {...cart} />
+              </PrivateRoute>
               <PrivateRoute exact path="/perfil-direccion/:id" component={Adress} />
               <AdminRoute exact path="/crear-producto" component={CreateProduct} />
             </Switch>

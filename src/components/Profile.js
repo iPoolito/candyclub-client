@@ -6,7 +6,7 @@ import UsersContext from '../context/Users/UsersContex'
 export default function Profile() {
   const ctxUser = useContext(UsersContext)
   const { user } = ctxUser
-  console.log(user)
+  // console.log(user)
   return (
     <div>
       <Flex justifyContent="space-around" mt="32px">

@@ -187,7 +187,11 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
                     <Button variant="outline" mr={3} onClick={onClose}>
                       Cancelar
                     </Button>
-                    <Button colorScheme="pink">Pagar</Button>
+                    <Link to="/pagar">
+                      <Button colorScheme="pink" onClick={onClose}>
+                        Pagar
+                      </Button>
+                    </Link>
                   </DrawerFooter>
                 </DrawerContent>
               </Drawer>

@@ -38,7 +38,7 @@ export default function CreateProduct() {
   }
 
   const handleUploadPhoto = async ({ target: { files } }) => {
-    console.log(files[0])
+    // console.log(files[0])
     const cloudinaryAPI = 'https://api.cloudinary.com/v1_1/dmuqufno4/image/upload'
 
     const data = new FormData()
@@ -47,11 +47,11 @@ export default function CreateProduct() {
     const {
       data: { secure_url }
     } = await axios.post(cloudinaryAPI, data)
-    console.log(secure_url)
+    // console.log(secure_url)
     setNewProduct(prevState => ({ ...prevState, imageUrl: secure_url }))
   }
 
-  console.log(featured)
+  // console.log(featured)
 
   return (
     <Flex
