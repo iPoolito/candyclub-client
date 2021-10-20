@@ -9,7 +9,7 @@ export default function Profile() {
   console.log(user)
   return (
     <div>
-      <Flex justifyContent="space-around">
+      <Flex justifyContent="space-around" mt="32px">
         <Table variant="simple" w="30%">
           <Thead>
             <Tr>
@@ -29,11 +29,12 @@ export default function Profile() {
           </Tbody>
         </Table>
         <Flex flexDir="column">
-          <Heading as="h1" size="2xl">
+          <Heading as="h1" size="2xl" mb="32px">
             Hola, {user.username}
           </Heading>
           <p>
-            Desde el panel de control de tu cuenta, puedes ver tus pedidos recientes, administrar tu direccion de envio.
+            Desde el panel de control de tu cuenta, puedes ver tus pedidos recientes y administrar tu direccion de
+            envio.
           </p>
         </Flex>
       </Flex>
