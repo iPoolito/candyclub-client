@@ -67,7 +67,9 @@ export default function Profile() {
           >
             <Thead>
               <Tr>
-                <Th>Ordenes</Th>
+                <Th>
+                  <Link to="/mis-ordenes">Ordenes </Link>
+                </Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -76,9 +78,9 @@ export default function Profile() {
                   <Link to={`/perfil-direccion/${user._id}`}> Direccion </Link>
                 </Th>
               </Tr>
-              <Tr>
+              {/* <Tr>
                 <Th>Soporte</Th>
-              </Tr>
+              </Tr> */}
             </Tbody>
           </Table>
         </Flex>

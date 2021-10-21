@@ -21,6 +21,9 @@ const About = lazy(() => import('./components/About'))
 const Adress = lazy(() => import('./components/Adress'))
 const CreateProduct = lazy(() => import('./components/CreateProduct.js'))
 const CheckOut = lazy(() => import('./components/CheckOut'))
+const OrderFinished = lazy(() => import('./components/OrderFinished'))
+const OrdersProfile = lazy(() => import('./components/OrdersProfile'))
+
 function App() {
   const cart = useCart()
 
@@ -41,10 +44,14 @@ function App() {
               <AuthRoute exact path="/crear-cuenta" component={Signup} />
               <AuthRoute exact path="/iniciar-sesion" component={Login} />
               <PrivateRoute exact path="/perfil" component={Profile} />
+              <PrivateRoute exact path="/mis-ordenes" component={OrdersProfile} />
               <PrivateRoute exact path="/pagar">
                 <CheckOut {...cart} />
               </PrivateRoute>
               <PrivateRoute exact path="/perfil-direccion/:id" component={Adress} />
+              <PrivateRoute exact path="/orden/:status">
+                <OrderFinished {...cart} />
+              </PrivateRoute>
               <AdminRoute exact path="/crear-producto" component={CreateProduct} />
             </Switch>
           </Router>

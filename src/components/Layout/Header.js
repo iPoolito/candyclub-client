@@ -17,7 +17,8 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerFooter,
-  DrawerHeader
+  DrawerHeader,
+  Text
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -128,22 +129,34 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
           <Image src={logo} alt="logo" h="64px" w="64px" objectFit="cover" />
         </Link>
         <Link to="/tienda">
-          <Box>Tienda</Box>
+          <Box>
+            <Text color="pink.500">
+              <b>Tienda </b>
+            </Text>
+          </Box>
         </Link>
         <Link to="/sobre-nosotros">
-          <Box>Preguntas Frecuentes</Box>
+          <Box>
+            <Text color="pink.500">
+              <b>Preguntas Frecuentes </b>
+            </Text>
+          </Box>
         </Link>
 
         {authStatus ? (
           <>
             <Link to="/perfil">
-              <Box>Mi Perfil</Box>
+              <Box>
+                <Text color="pink.500">
+                  <b> Perfil </b>
+                </Text>
+              </Box>
             </Link>
 
             <>
-              <span className="material-icons" onClick={onOpen} ref={btnRef}>
-                shopping_cart
-              </span>
+              <Text color="pink.500" onClick={onOpen} ref={btnRef}>
+                <b>Carrito </b>
+              </Text>
 
               <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef} size="sm">
                 <DrawerOverlay />
@@ -199,7 +212,11 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
 
             {user && user.role === 'admin' ? (
               <Link to="/crear-producto">
-                <Box>Crear producto</Box>
+                <Box>
+                  <Text color="pink.500">
+                    <b>Crear Producto </b>
+                  </Text>
+                </Box>
               </Link>
             ) : null}
 
@@ -209,17 +226,27 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
                   logoutUser()
                 }}
               >
-                Cerrar Sesion
+                <Text color="pink.500">
+                  <b>Cerrar Sesion </b>
+                </Text>
               </Box>
             </Link>
           </>
         ) : (
           <>
             <Link to="/iniciar-sesion">
-              <Box>Iniciar Sesion</Box>
+              <Box>
+                <Text color="pink.500">
+                  <b>Iniciar Sesion </b>
+                </Text>
+              </Box>
             </Link>
             <Link to="/crear-cuenta">
-              <Box>Registrarse</Box>
+              <Box>
+                <Text color="pink.500">
+                  <b>Registrarse </b>
+                </Text>
+              </Box>
             </Link>
           </>
         )}

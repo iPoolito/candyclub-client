@@ -22,6 +22,24 @@ const ORDERS_API = {
       console.log(error)
       return null
     }
+  },
+  PAYMENT_ORDER: async items => {
+    try {
+      const token = localStorage.getItem('token')
+
+      if (!token) {
+        console.log('Borrando Token de los headers')
+        delete axiosClient.defaults.headers.common['x-auth-token']
+      }
+      axiosClient.defaults.headers.common['x-auth-token'] = token
+
+      const { data } = await axiosClient.post('/api/orders/pagar', { items })
+
+      return data.data
+    } catch (error) {
+      console.log(error)
+      return null
+    }
   }
 }
 

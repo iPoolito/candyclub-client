@@ -87,5 +87,10 @@ export default function useCart() {
     localStorage.setItem('cart', JSON.stringify(newCart))
   }
 
-  return { cart, handleAddItem, handleRemoveItem, total }
+  const deleteCart = () => {
+    setCart({})
+    localStorage.removeItem('cart')
+  }
+
+  return { cart, handleAddItem, handleRemoveItem, deleteCart, total }
 }

@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react'
 import PRODUCTS_API from '../api/products'
 import { Flex, Image, Heading, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
 import Pik from '../images/diaCampo.jpeg'
-import Oreo from '../images/OreoSmoores.jpeg'
-import Swiss from '../images/Swissmiss.jpeg'
-
+import bPink from '../images/backPinkHome.jpg'
 export default function Home() {
   const [listOfProducts, setListOfProducts] = useState([])
 
@@ -22,12 +19,13 @@ export default function Home() {
       as="main"
       width={['100%', '100%', '100%', '100%', '100%']}
       inH="calc(100vh - 80px)"
-      backgroundColor=" #fbd3d4 "
+      // backgroundColor=" #fbd3d4 "
+      backgroundImage={bPink}
       backgroundRepeat="no-repeat"
       align="center"
       justify="space-between"
       flexDirection="column"
-      color="black"
+      color="blackAlpha.900"
       p={16}
     >
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
