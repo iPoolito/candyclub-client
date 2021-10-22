@@ -29,7 +29,7 @@ const OrderFinished = ({ deleteCart, cart }) => {
     createOrder()
 
     // TODO: CREAR LA ORDEN, en el backend
-  }, [cart, deleteCart, order, status, user._id])
+  }, [])
 
   const renderContent = () => {
     switch (status) {

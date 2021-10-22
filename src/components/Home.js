@@ -3,7 +3,7 @@ import PRODUCTS_API from '../api/products'
 import { Flex, Image, Heading, Text, SimpleGrid, Box } from '@chakra-ui/react'
 import parallax from '../images/wallpaperfood.jpg'
 import bPink from '../images/backPinkHome.jpg'
-
+import logo from '../images/candyclub-PhotoRoom.png'
 export default function Home() {
   const [listOfProducts, setListOfProducts] = useState([])
 
@@ -30,7 +30,9 @@ export default function Home() {
         minHeight="500px"
         backgroundAttachment="fixed"
         backgroundPosition="center"
-      ></Flex>
+      >
+        <Image src={logo} alt="logo" h="100px" w="100px" />
+      </Flex>
       <Flex align="center" justifyContent="flex-end" w="100%" flexDir="row" backgroundImage={bPink}>
         <Heading as="h1" size="2xl" w="100%" mb="64px" textAlign="center" mt={32}>
           Destacados
