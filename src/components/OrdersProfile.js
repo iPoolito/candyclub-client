@@ -41,8 +41,12 @@ export default function OrdersProfile() {
           Ordenes
         </Heading>
         <UnorderedList>
-          {user.orders?.map(el => {
-            return <ListItem m={2}>El id de tu orden es: {el}</ListItem>
+          {user.orders?.map((el, i) => {
+            return (
+              <ListItem key={i} m={2}>
+                El id de tu orden es: {el}
+              </ListItem>
+            )
           })}
         </UnorderedList>
 

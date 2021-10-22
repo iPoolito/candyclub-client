@@ -6,7 +6,7 @@ import { useMercadopago } from 'react-sdk-mercadopago'
 
 export default function CheckOut({ cart, handleAddItem, handleRemoveItem, total }) {
   const toast = useToast()
-  const [isPaying, setIsPaying] = useState(false)
+
   const ctxUser = useContext(UsersContext)
   const { registerAdress, user } = ctxUser
   const [mercadoPagoPreference, setMercadoPagoPreference] = useState(null)
@@ -26,10 +26,8 @@ export default function CheckOut({ cart, handleAddItem, handleRemoveItem, total 
       }))
 
     const checkOut = async event => {
-      setIsPaying(true)
       const response = await ORDERS_API.PAYMENT_ORDER(formatItems())
       setMercadoPagoPreference(response.id)
-      setIsPaying(false)
     }
 
     checkOut()

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { useParams, useHistory, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { Center, VStack, Heading, Image, Text } from '@chakra-ui/react'
 import ORDERS_API from '../api/orders'
 import UsersContext from '../context/Users/UsersContex'
@@ -9,25 +9,27 @@ const OrderFinished = ({ deleteCart, cart }) => {
   const ctxUser = useContext(UsersContext)
   const { user } = ctxUser
   const { status } = useParams()
-  const history = useHistory()
 
   const [order, setOrder] = useState({
     prudcts: cart,
     buyer: user._id
   })
   useEffect(() => {
-    if (status === 'exito' || status === 'pendiente') {
-      setOrder({
-        prudcts: cart,
-        buyer: user._id
-      })
-      ORDERS_API.CREATE_ORDER(order)
+    const createOrder = async () => {
+      if ((status === 'exito' || status === 'pendiente') && Object.keys(cart)) {
+        setOrder({
+          prudcts: cart,
+          buyer: user._id
+        })
+        await ORDERS_API.CREATE_ORDER(order)
 
-      deleteCart()
+        deleteCart()
+      }
     }
+    createOrder()
 
     // TODO: CREAR LA ORDEN, en el backend
-  }, [])
+  }, [cart, deleteCart, order, status, user._id])
 
   const renderContent = () => {
     switch (status) {

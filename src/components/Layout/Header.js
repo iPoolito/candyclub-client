@@ -81,7 +81,7 @@ export default function Header({ cart, handleAddItem, handleRemoveItem, total })
                 </Link>
 
                 <MenuItem>
-                  <span className="material-icons" onClick={onOpen} ref={btnRef} colorScheme="pink">
+                  <span className="material-icons" onClick={onOpen} ref={btnRef}>
                     shopping_cart
                   </span>
                   <p onClick={onOpen} ref={btnRef}>
